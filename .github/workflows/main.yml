@@ -35,8 +35,8 @@ jobs:
       - name: Install AWS SDK
         run: |
           git clone https://github.com/aws/aws-sdk-cpp  --recurse-submodules --branch 1.11.91 --single-branch
-          mkdir /sdk_build
-          cd /sdk_build
+          mkdir sdk_build
+          cd sdk_build
           sudo cmake ../aws-sdk-cpp -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/include/aws -DCMAKE_INSTALL_PREFIX=/usr/include/aws -DBUILD_ONLY="s3"
           nproc | sudo xargs -I % make -j% DESTDIR=/
           nproc | sudo xargs -I % make -j% DESTDIR=/ install
