@@ -38,8 +38,8 @@ jobs:
           mkdir /sdk_build
           cd /sdk_build
           sudo cmake ../aws-sdk-cpp -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/include/aws -DCMAKE_INSTALL_PREFIX=/usr/include/aws -DBUILD_ONLY="s3"
-          sudo nproc | xargs -I % make -j% DESTDIR=/
-          sudo nproc | xargs -I % make -j% DESTDIR=/ install
+          nproc | sudo xargs -I % make -j% DESTDIR=/
+          nproc | sudo xargs -I % make -j% DESTDIR=/ install
           
       - name: Clone
         run: |
