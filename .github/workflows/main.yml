@@ -35,6 +35,8 @@ jobs:
       - name: Clone
         run: |
           git clone https://github.com/pgspider/parquet_s3_fdw
+          mkdir data
+          cp parquet_s3_fdw/data/* data/
 
       - name: setup minio
         run: |
