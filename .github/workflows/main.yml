@@ -30,4 +30,8 @@ jobs:
 
       - name: Install Arrow
         run: |
-          bash /src/install_arrow.sh
+          code/install_arrow.sh
+
+      - name: setup minio
+        run: |
+          code/initminio.sh
