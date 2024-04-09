@@ -36,8 +36,13 @@ jobs:
         run: |
           git clone https://github.com/pgspider/parquet_s3_fdw
           mkdir data
-          cp parquet_s3_fdw/data/* data/
+          cp -r parquet_s3_fdw/data/* data/
 
       - name: setup minio
         run: |
           bash code/initminio.sh
+
+      - name: try and compile a thing...
+        run: |
+          cd parquet_s3_fdw
+          make install
