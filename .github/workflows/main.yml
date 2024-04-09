@@ -1,0 +1,33 @@
+name: CI
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        pg: [16, 15, 14]
+    name: Postgresql ${{ matrix.pg }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v5
+
+      - name: Install Postgresql
+        run: |
+          # add the repo
+          sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          # Import the repository signing key:
+          wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          # Update the package lists:
+          sudo apt-get update
+          # Install
+          sudo apt-get install -y "postgresql-${{ matrix.pg }}"
+          apt-get install -y gcc make g++ postgresql-server-dev-${{ matrix.pg }}
+
+      - name: Install Arrow
+        run: |
+          bash /src/install_arrow.sh
