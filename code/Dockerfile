@@ -17,5 +17,3 @@ RUN apt-get update && \
 	bash /src/install_arrow.sh
 
 USER postgres
-
-ENTRYPOINT PGDATA=${PGDATA} bash /src/test/run_tests.sh
