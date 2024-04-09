@@ -27,7 +27,7 @@ jobs:
           # Install
           sudo apt-get install -y "postgresql-${{ matrix.pg }}"
           sudo apt-get install -y gcc make g++ postgresql-server-dev-${{ matrix.pg }}
-          sudo apt-get install -y -V ca-certificates lsb-release wget curl
+          sudo apt-get install -y -V ca-certificates lsb-release wget libssl-dev libcurl4-openssl-dev
 
       - name: Install AWS SDK
         run: |
