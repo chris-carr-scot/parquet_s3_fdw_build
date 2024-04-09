@@ -32,6 +32,10 @@ jobs:
         run: |
           bash code/install_arrow.sh
 
+      - name: Clone
+        run: |
+          git clone https://github.com/pgspider/parquet_s3_fdw
+
       - name: setup minio
         run: |
           bash code/initminio.sh
