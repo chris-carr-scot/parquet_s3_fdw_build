@@ -30,7 +30,7 @@ jobs:
 
       - name: Install Arrow
         run: |
-          sudo code/install_arrow.sh
+          code/install_arrow.sh
 
       - name: setup minio
         run: |
