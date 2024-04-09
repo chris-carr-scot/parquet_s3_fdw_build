@@ -45,4 +45,4 @@ jobs:
       - name: try and compile a thing...
         run: |
           cd parquet_s3_fdw
-          make install
+          make USE_PGXS=1 install
