@@ -30,8 +30,8 @@ jobs:
     
       - name: Install pgxman
         run: |
-          wget https://apt.pgxman.com/pgxman-keyring.gpg /usr/share/keyrings/pgxman-cli.gpg
-          echo "deb [arch=${_arch} signed-by=/usr/share/keyrings/pgxman-cli.gpg] https://apt.pgxman.com/cli stable main" | ${SUDO} tee /etc/apt/sources.list.d/pgxman-cli.list >/dev/null
+          wget https://apt.pgxman.com/pgxman-keyring.gpg -o ./pgxman-cli.gpg
+          echo "deb [arch=${_arch} signed-by=./pgxman-cli.gpg] https://apt.pgxman.com/cli stable main" | ${SUDO} tee /etc/apt/sources.list.d/pgxman-cli.list >/dev/null
           sudo apt update
           sudo apt install -y pgxman
 
