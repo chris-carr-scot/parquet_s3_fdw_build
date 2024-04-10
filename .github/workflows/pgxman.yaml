@@ -30,7 +30,7 @@ jobs:
     
       - name: Install pgxman
         run: |
-          curl -sfl https://install.pgx.sh | sh -
+          curl -sfl https://install.pgx.sh | sudo sh -
       - name: Install s3_parquet_fdw
         run: |
           pgxman install s3_parquet_fdw
