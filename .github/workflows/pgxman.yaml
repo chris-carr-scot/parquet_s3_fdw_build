@@ -34,5 +34,5 @@ jobs:
 
       - name: Install s3_parquet_fdw
         run: |
-          pgxman install s3_parquet_fdw
+          sudo pgxman install s3_parquet_fdw
           
