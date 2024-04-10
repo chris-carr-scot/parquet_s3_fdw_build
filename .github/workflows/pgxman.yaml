@@ -30,7 +30,12 @@ jobs:
     
       - name: Install pgxman
         run: |
-          curl -sfl https://install.pgx.sh | sudo sh -
+          downloader https://apt.pgxman.com/pgxman-keyring.gpg /usr/share/keyrings/pgxman-cli.gpg
+          echo "deb [arch=${_arch} signed-by=/usr/share/keyrings/pgxman-cli.gpg] https://apt.pgxman.com/cli stable main" | ${SUDO} tee /etc/apt/sources.list.d/pgxman-cli.list >/dev/null
+          sudo apt update
+          sudo apt install -y pgxman
+
+        ensure ${SUDO} apt install -y "${PGXMAN_INSTALLER_DEBIAN_PACKAGE_DIR}/pgxman_linux_${_arch}.deb"
       - name: Install s3_parquet_fdw
         run: |
           pgxman install s3_parquet_fdw
